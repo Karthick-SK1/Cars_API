@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 public class Car_Controller_JPA {
@@ -52,7 +53,7 @@ public class Car_Controller_JPA {
 
     }
 
-    @PutMapping("/updateCarprice")
+    @PutMapping("/updateCarprice/{id}")
     public ResponseEntity<Car_bean> updateCarPrice(@PathVariable(value = "id") int id, @RequestBody Car_bean carBean) {
         try {
 
@@ -69,10 +70,19 @@ public class Car_Controller_JPA {
     }
 
     @DeleteMapping("/deleteCar/{id}")
-    public Responses deleteCar(@PathVariable(value = "id") int id) {
+    public ResponseEntity<Car_bean> deleteCar(@PathVariable(value = "id") int id) {
+           Car_bean carBean2 = null;
+        try {
 
-        return carServicesJpa.deleteCar(id);
+            Car_bean existcar = carServicesJpa.getcarByid(id);
 
+            carServicesJpa.deleteCar(carBean2);
+        }
+        catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<Car_bean>(carBean2,HttpStatus.OK);
     }
 
 

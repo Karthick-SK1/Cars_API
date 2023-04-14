@@ -4,12 +4,13 @@ import com.demo.springboot.beans.Car_bean;
 import com.demo.springboot.beans.Responses;
 import com.demo.springboot.repositories.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@Component
 public class Car_Services_JPA {
 
     @Autowired
@@ -23,7 +24,15 @@ public class Car_Services_JPA {
 
     public Car_bean getcarByid(int id) {
 
-        return repository.findById(id).get();
+        List<Car_bean> carBeans = repository.findAll();
+        Car_bean carBean = null;
+
+        for (Car_bean con :carBeans) {
+
+            if (con.getId()==id)
+                carBean = con;
+        }
+        return carBean;
     }
 
     public Car_bean getcarbybrand(String brand) {
@@ -62,15 +71,14 @@ public class Car_Services_JPA {
         return carBean;
     }
 
-    public Responses deleteCar(int id) {
-
-        repository.deleteById(id);
+    public Responses deleteCar(Car_bean id) {
 
         Responses res = new Responses();
         res.setMessage("Car is Deleted Successfully");
-        res.setId(id);
         return res;
     }
+
+
 
 
 }
