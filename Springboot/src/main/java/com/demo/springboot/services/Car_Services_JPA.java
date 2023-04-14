@@ -73,6 +73,9 @@ public class Car_Services_JPA {
 
     public Responses deleteCar(Car_bean id) {
 
+
+        repository.delete(id);
+
         Responses res = new Responses();
         res.setMessage("Car is Deleted Successfully");
         return res;
