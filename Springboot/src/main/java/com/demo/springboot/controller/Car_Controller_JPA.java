@@ -46,12 +46,12 @@ public class Car_Controller_JPA {
         }
     }
 
-    @PostMapping("AddCar")
+    @PostMapping("/AddCar")
+    @ResponseStatus(HttpStatus.CREATED)
     public Car_bean addCar(@RequestBody Car_bean carBean) {
-
         return carServicesJpa.addcar(carBean);
-
     }
+
 
     @PutMapping("/updateCarprice/{id}")
     public ResponseEntity<Car_bean> updateCarPrice(@PathVariable(value = "id") int id, @RequestBody Car_bean carBean) {

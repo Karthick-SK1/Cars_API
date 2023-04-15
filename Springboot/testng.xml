@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="My Test Suite" verbose="1">
+    <test name="My Test">
+        <classes>
+            <class name="com.demo.springboot.servicesTest"/>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter"/>
+    </listeners>
+    <parameter name="outputDir" value="my-testng-reports"/>
+</suite>
