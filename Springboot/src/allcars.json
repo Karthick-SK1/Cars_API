@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "brand": "Hyundai",
+    "price": "12,00,000",
+    "model": "i20"
+  },
+  {
+    "id": 2,
+    "brand": "Volkswagen",
+    "price": "14,00,000",
+    "model": "Polo GT"
+  },
+  {
+    "id": 3,
+    "brand": "Tata",
+    "price": "10,00,000",
+    "model": "Altroz"
+  },
+  {
+    "id": 4,
+    "brand": "Suzuki",
+    "price": "09,00,000",
+    "model": "Swift"
+  },
+  {
+    "id": 5,
+    "brand": "Audi",
+    "price": "1.20 C",
+    "model": "R8"
+  }
+]
