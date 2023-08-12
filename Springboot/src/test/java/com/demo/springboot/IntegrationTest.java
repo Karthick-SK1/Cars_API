@@ -59,7 +59,7 @@ public class IntegrationTest {
                 "    \"id\": 3,\n" +
                 "    \"brand\": \"Tata\",\n" +
                 "    \"price\": \"10,00,000\",\n" +
-                "    \"model\": \"Altroz\"\n" +
+                "    \"model\": \"AltroZ\"\n" +
                 "}";
 
         TestRestTemplate restTemplate = new TestRestTemplate();
