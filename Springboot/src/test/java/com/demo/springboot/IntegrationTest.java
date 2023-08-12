@@ -25,7 +25,7 @@ public class IntegrationTest {
 
         TestRestTemplate restTemplate = new TestRestTemplate();
 
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8090/Cars", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/Cars", String.class);
 
         System.out.println(response.getStatusCode());
 
@@ -47,7 +47,7 @@ public class IntegrationTest {
 
         TestRestTemplate restTemplate = new TestRestTemplate();
 
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8090/Cars/5", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/Cars/5", String.class);
 
         JSONAssert.assertEquals(expected, response.getBody(), false);
     }
@@ -64,7 +64,7 @@ public class IntegrationTest {
 
         TestRestTemplate restTemplate = new TestRestTemplate();
 
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8090//Cars/brand?brand=Tata", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080//Cars/brand?brand=Tata", String.class);
 
         JSONAssert.assertEquals(expected, response.getBody(), false);
     }
@@ -95,7 +95,7 @@ public class IntegrationTest {
 
         HttpEntity<Car_bean> request = new HttpEntity<>(car, headers);
 
-        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8090/AddCar", request, String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/AddCar", request, String.class);
 
         Assert.assertTrue(response.getBody().contains("Taycan"));
 
