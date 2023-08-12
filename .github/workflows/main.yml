@@ -1,0 +1,24 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ] # Update this to your default branch name
+  pull_request:
+    branches: [ "main" ] # Update this to your default branch name
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file Springboot/pom.xml -Dmaven.test.failure.ignore=true # Adjust the path to your pom.xml file
+
