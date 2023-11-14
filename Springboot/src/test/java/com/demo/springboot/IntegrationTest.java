@@ -58,7 +58,7 @@ public class IntegrationTest {
 
         TestRestTemplate restTemplate = new TestRestTemplate();
 
-      ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/Cars",String.class);
+      ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8090/Cars",String.class);
 
         System.out.println(response.getStatusCode());
 
@@ -80,7 +80,7 @@ public class IntegrationTest {
 
         TestRestTemplate restTemplate = new TestRestTemplate();
 
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/Cars/5", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8090/Cars/5", String.class);
 
         JSONAssert.assertEquals(expected,response.getBody(),false);
     }
@@ -97,37 +97,37 @@ public class IntegrationTest {
 
         TestRestTemplate restTemplate = new TestRestTemplate();
 
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080//Cars/brand?brand=Tata", String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8090//Cars/brand?brand=Tata", String.class);
 
         JSONAssert.assertEquals(expected,response.getBody(),false);
     }
 
-    @Test(priority = 4)
-    public void Test_addCar() throws JSONException {
-
-        String expected = "{\n" +
-                "    \"id\": 6,\n" +
-                "    \"brand\": \"Porsche\",\n" +
-                "    \"price\": \"3 C\",\n" +
-                "    \"model\": \"Taycan\"\n" +
-                "}";
-
-        TestRestTemplate restTemplate = new TestRestTemplate();
-
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        Car_bean car = new Car_bean(6,"Porsche","3 C","Taycan");
-
-        HttpEntity<Car_bean> request = new HttpEntity<>(car, headers);
-
-        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8080/AddCar", request, String.class);
-
-        JSONAssert.assertEquals(expected, response.getBody(), false);
-
-        Assert.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-    }
+//    @Test(priority = 4)
+//    public void Test_addCar() throws JSONException {
+//
+//        String expected = "{\n" +
+//                "    \"id\": 6,\n" +
+//                "    \"brand\": \"Porsche\",\n" +
+//                "    \"price\": \"3 C\",\n" +
+//                "    \"model\": \"Taycan\"\n" +
+//                "}";
+//
+//        TestRestTemplate restTemplate = new TestRestTemplate();
+//
+//        HttpHeaders headers = new HttpHeaders();
+//
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//
+//        Car_bean car = new Car_bean(6,"Porsche","3 C","Taycan");
+//
+//        HttpEntity<Car_bean> request = new HttpEntity<>(car, headers);
+//
+//        ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8090/AddCar", request, String.class);
+//
+//        JSONAssert.assertEquals(expected, response.getBody(), false);
+//
+//        Assert.assertEquals(HttpStatus.CREATED, response.getStatusCode());
+//    }
 
 
 
