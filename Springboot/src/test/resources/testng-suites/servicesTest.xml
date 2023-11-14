@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Services Tests">
+    <test name="Services">
+        <classes>
+            <class name="com.demo.springboot.servicesTest"/>
+        </classes>
+    </test>
+</suite>
